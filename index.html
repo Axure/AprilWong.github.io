@@ -11,6 +11,20 @@
             text-align: left;
             z-index: 1;
         }
+        #loseBackground{
+            position: absolute;
+            left: 10px;
+            text-align: left;
+            z-index: 1;
+            visibility: hidden;
+        }
+        #winBackground{
+            position: absolute;
+            left: 10px;
+            text-align: left;
+            z-index: 1;
+            visibility: hidden;
+        }
         #button{
             background-image: url("res/off.png");
             position: absolute;
@@ -34,16 +48,6 @@
             left: 10px;
             z-index: 0;
         }
-        #score{
-            position: absolute;
-            left: 100px;
-            top: 320px;
-            width: 20px;
-            height: 20px;
-            font-size: 20px;
-            text-align: left;
-            z-index: 3;
-        }
         #content{
             position: absolute;
             left: 0px;
@@ -57,16 +61,17 @@
             document.getElementById("button").style.visibility = "hidden";
         }
     </script>
+    <script src="cocos2d.js"></script>
 </head>
 <body style="padding:0; margin: 0; background: #fff;">
 <div style="text-align: center; font-size: 0">
     <div id = content>
         <div id = "startBackground"><img src="res/start.png" alt=""/></div>
+        <div id = "loseBackground"><img src="res/lose.png"/></div>
+        <div id = "winBackground"><img src="res/win.png"/></div>
         <div id = "button" onclick="startGame();"></div>
-        <div id = "score">2333</div>
         <canvas id = "gameCanvas" width="733" height="355"></canvas>
     </div>
 </div>
 </body>
 </html>
-<script src="cocos2d.js"></script>

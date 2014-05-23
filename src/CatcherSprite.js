@@ -28,6 +28,7 @@ var CatcherSprite = cc.Sprite.extend({
         if(dy <= 0){
             dy = rdy;
             dx = 0;
+            stat = 0 ;
             this.setPosition(cc.p(this._position.x+dx,this._position.y+dy));
         }
         return true;

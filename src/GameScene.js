@@ -6,11 +6,13 @@ const RANGE = 30;
 const TOTALLIFE = 5;
 const ANIMALLINE = 290;
 const CATCHERLINE = 450;
+const TOTALNUM = 5;
 var g_GameZOder = {bg: 0, ui: 1, uii: 2,front: 100};//level
 var move = 0; //move marks whether the cat is move or not
-var stat = 0;
 var Animal = [];
-var start = 0;
+var Flowers = [];
+var Drops = [];
+var stat = 0;
 var life = TOTALLIFE ;
 var catchNum = 0;
 var g_GameStatus = {normal: 0, stop: 1, gameOver: 2};
@@ -36,10 +38,6 @@ var GameScene = cc.Scene.extend({
         this.gameLayer.addChild(bg, g_GameZOder.bg);
         bg.setPosition(cc.p(0, 0));
 
-
-        start = 0;
-
-
         //add animals
         var catt = new Cat();
         Animal.push(catt);
@@ -62,6 +60,19 @@ var GameScene = cc.Scene.extend({
         this.catcher.setPosition(cc.p(0, CATCHERLINE));
         this.gameLayer.addChild(this.catcher, g_GameZOder.ui);
 
+        for (var i = 0 ; i < TOTALNUM; i++){
+            var flowerr = new FlowerSprite();
+            flowerr.setPosition(cc.p(i*23+620,40));
+            Flowers.push(flowerr);
+        }
+
+        for (var i = 0 ; i <TOTALLIFE; i++){
+            var  dropp = new DropSprite();
+            dropp.setPosition(cc.p(i*23+620,15));
+            Drops.push(dropp);
+            this.gameLayer.addChild(Drops[i], g_GameZOder.ui);
+        }
+
     },
 
 
@@ -78,22 +89,32 @@ var GameScene = cc.Scene.extend({
                 var ay = this.catcher._position.y;
                 var bx = Animal[i]._position.x;
                 var by = Animal[i]._position.y;
-                if ( ( ay == ANIMALLINE ) && ( Math.abs(ax - bx) <= RANGE)){
-                    Animal[i].isCaught = true;
-                    catchNum = catchNum + 1;
+                if ( ay == ANIMALLINE ){
+                    if ( Math.abs( ax - bx ) <= RANGE){
+                        Animal[i].isCaught = true;
+                        this.gameLayer.addChild(Flowers[catchNum], g_GameZOder.ui);
+                        catchNum = catchNum + 1;
+                        stat = 1 ;
+                    }
                 }
             }
         }
 
-        //draw flowers
-//        for(var i = 0 ; i < catchNum ; i++ ){
-//            var  flowerr = new FlowerSprite();
-//            console.log(i);
-//            flowerr.setPosition(cc.p(i*50+50,50));
-//            this.gameLayer.addChild(flowerr, g_GameZOder.ui);
-//        }
+        if ((dy > 0)&&(stat != 1)){
+            life = life - 1;
+            stat = 1;
+            this.gameLayer.removeChild(Drops[life],g_GameZOder.ui);
+        }
 
+        if(dy == 0){
 
-        document.getElementById("score").innerText = catchNum * 10 ;
+            if (catchNum == TOTALNUM){
+                document.getElementById("winBackground").style.visibility = "visible";
+            }
+
+            if (life == 0){
+                document.getElementById("loseBackground").style.visibility = "visible";
+            }
+        }
     }
 });

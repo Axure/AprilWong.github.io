@@ -6,6 +6,7 @@ var s_totoro = "res/totoro.png";
 var s_bunny = "res/bunny.png";
 var s_lion = "res/lion.png";
 var s_flower = "res/flower.png";
+var s_drop = "res/drop.png"
 
 var g_ressources = [
     //image
@@ -16,7 +17,8 @@ var g_ressources = [
     {type:"image", src:s_totoro},
     {type:"image", src:s_bunny},
     {type:"image", src:s_lion},
-    {type:"image", src:s_flower}
+    {type:"image", src:s_flower},
+    {type:"image", src:s_drop}
 
     //plist
 

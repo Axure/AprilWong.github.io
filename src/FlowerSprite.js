@@ -7,3 +7,10 @@ var FlowerSprite = cc.Sprite.extend({
         this.initWithFile(s_flower);
     }
 });
+
+var DropSprite = cc.Sprite.extend({
+    ctor: function(){
+        this._super();
+        this.initWithFile(s_drop);
+    }
+})
