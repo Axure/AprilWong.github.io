@@ -41,7 +41,8 @@
             'src/myApp.js',//add your own files in order here
             'src/GameScene.js',
             'src/CatcherSprite.js',
-            'src/AnimalSprite.js'
+            'src/AnimalSprite.js',
+            'src/FlowerSprite.js'
         ]
     };
     window.addEventListener('DOMContentLoaded', function () {

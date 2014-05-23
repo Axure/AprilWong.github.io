@@ -5,7 +5,8 @@ var animaldx = 4;
 var AnimalSprite = cc.Sprite.extend({
     isCaught:false,
     update: function(){
-        if(this.isCaught){
+        if ( this.isCaught ){
+            if ( this._position.y <= 600 )
             this.setPosition(cc.p(this._position.x,this._position.y+5));
         }
         else{

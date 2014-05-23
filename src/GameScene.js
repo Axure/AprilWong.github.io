@@ -1,14 +1,18 @@
 /**
  * Created by apple on 14-5-21.
  */
+
+const RANGE = 30;
+const TOTALLIFE = 5;
+const ANIMALLINE = 290;
+const CATCHERLINE = 450;
 var g_GameZOder = {bg: 0, ui: 1, uii: 2,front: 100};//level
 var move = 0; //move marks whether the cat is move or not
 var stat = 0;
-var record = 0;
 var Animal = [];
 var start = 0;
-var life = 5 ;
-var countNum = 0;
+var life = TOTALLIFE ;
+var catchNum = 0;
 var g_GameStatus = {normal: 0, stop: 1, gameOver: 2};
 var GameScene = cc.Scene.extend({
     gameLayer: null,
@@ -55,7 +59,7 @@ var GameScene = cc.Scene.extend({
 
         //add catcher
         this.catcher = new CatcherSprite();
-        this.catcher.setPosition(cc.p(0, 450));
+        this.catcher.setPosition(cc.p(0, CATCHERLINE));
         this.gameLayer.addChild(this.catcher, g_GameZOder.ui);
 
     },
@@ -67,25 +71,29 @@ var GameScene = cc.Scene.extend({
             Animal[i].update(dt);
         }
 
+        //judge whether caught or not
         for(var i = 0 ; i < Animal.length ; i++){
-            var ax = this.catcher._position.x;
-            var ay = this.catcher._position.y;
-            var bx = Animal[i]._position.x;
-            var by = Animal[i]._position.y;
-            if ((ay == 290)&&(by) ){
-                if(Math.abs(ax-bx)<30){
-                    if (Animal[i].isCaught == false){
-                        Animal[i].isCaught = true;
-                        stat = 1;
-                        countNum = countNum + 1;
-                    }
+            if (Animal[i].isCaught == false){
+                var ax = this.catcher._position.x;
+                var ay = this.catcher._position.y;
+                var bx = Animal[i]._position.x;
+                var by = Animal[i]._position.y;
+                if ( ( ay == ANIMALLINE ) && ( Math.abs(ax - bx) <= RANGE)){
+                    Animal[i].isCaught = true;
+                    catchNum = catchNum + 1;
                 }
-                else{
-                    stat = -1;
-                }
-            };
+            }
         }
-        // judge whether caught or not
-        document.getElementById("score").innerText = countNum * 10 ;
+
+        //draw flowers
+//        for(var i = 0 ; i < catchNum ; i++ ){
+//            var  flowerr = new FlowerSprite();
+//            console.log(i);
+//            flowerr.setPosition(cc.p(i*50+50,50));
+//            this.gameLayer.addChild(flowerr, g_GameZOder.ui);
+//        }
+
+
+        document.getElementById("score").innerText = catchNum * 10 ;
     }
 });
