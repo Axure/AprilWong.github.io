@@ -63,6 +63,9 @@
             z-index: 3;
             visibility: hidden;
         }
+        .preload{
+            display: none !important;
+        }
 
     </style>
     <script>
@@ -75,8 +78,6 @@
             document.getElementById("loseBackground").style.visibility = "hidden";
         }
     </script>
-    <script src="cocos2d.js"></script>
-
 
     <script type="text/javascript" >
         var jiathis_config={
@@ -98,6 +99,8 @@
         <div id = "loseBackground"><img src="res/lose.png"/></div>
         <div id = "winBackground"><img src="res/win.png"/></div>
         <div id = "button" onclick="startGame();"></div>
+        <div class = "preload"><img src="res/off.png" alt=""/></div>
+        <div class = "preload"><img src="res/on.png" alt=""/></div>
         <!-- JiaThis Button BEGIN -->
         <div class="jiathis_style" id = "share"><span class="jiathis_txt">( ﾟДﾟ)ﾉ⌒⑤分享窝：</span>
             <a class="jiathis_button_qzone"></a>
@@ -119,7 +122,7 @@
     </div>
 </div>
 
-
+<script src="cocos2d.js"></script>
 
 </body>
 </html>
