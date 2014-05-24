@@ -53,16 +53,42 @@
             left: 0px;
             top: 0px;
         }
+
+        #share{
+            position: absolute;
+            font-size: 15px;
+            left: 250px;
+            top: 240px;
+            text-align: left;
+            z-index: 3;
+            visibility: hidden;
+        }
+
     </style>
     <script>
         function startGame(){
 //            console.log(document.getElementById("startBackground").style.visibility);
             document.getElementById("startBackground").style.visibility = "hidden";
             document.getElementById("button").style.visibility = "hidden";
+            document.getElementById("share").style.visibility = "hidden";
         }
     </script>
     <script src="cocos2d.js"></script>
+
+
+    <script type="text/javascript" >
+        var jiathis_config={
+            sm:"renren",
+            url:"box.myqsc.com",
+            summary:"沉闷可耻，卖萌无罪~ 猜猜我在Box上抓到了什么╰(*°▽°*)╯",
+            title:" 一起来和Box过六一吧 ##",
+            shortUrl:false,
+            hideMore:false
+        }
+    </script>
 </head>
+
+
 <body style="padding:0; margin: 0; background: #fff;">
 <div style="text-align: center; font-size: 0">
     <div id = content>
@@ -70,8 +96,28 @@
         <div id = "loseBackground"><img src="res/lose.png"/></div>
         <div id = "winBackground"><img src="res/win.png"/></div>
         <div id = "button" onclick="startGame();"></div>
+        <!-- JiaThis Button BEGIN -->
+        <div class="jiathis_style" id = "share"><span class="jiathis_txt">分享到：</span>
+            <a class="jiathis_button_qzone"></a>
+            <a class="jiathis_button_tsina"></a>
+            <a class="jiathis_button_tqq"></a>
+            <a class="jiathis_button_weixin"></a>
+            <a class="jiathis_button_renren"></a>
+            <a class="jiathis_button_fb"></a>
+            <a class="jiathis_button_twitter"></a>
+            <a class="jiathis_button_fanfou"></a>
+            <a class="jiathis_button_googleplus"></a>
+            <a class="jiathis_button_tumblr"></a>
+            <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+            <a class="jiathis_counter_style"></a>
+        </div>
+        <!-- JiaThis Button END -->
+        <script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
         <canvas id = "gameCanvas" width="733" height="355"></canvas>
     </div>
 </div>
+
+
+
 </body>
 </html>

@@ -110,10 +110,12 @@ var GameScene = cc.Scene.extend({
 
             if (catchNum == TOTALNUM){
                 document.getElementById("winBackground").style.visibility = "visible";
+                document.getElementById("share").style.visibility = "visible";
             }
 
             if (life == 0){
                 document.getElementById("loseBackground").style.visibility = "visible";
+                document.getElementById("share").style.visibility = "visible";
             }
         }
     }
