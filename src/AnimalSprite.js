@@ -27,6 +27,7 @@ var Cat = AnimalSprite.extend({
     },
 
     initData: function(){
+        this.isCaught = false;
         this.setPosition(cc.p(50,120));
     }
 });
@@ -38,30 +39,8 @@ var Panda =AnimalSprite.extend({
     },
 
     initData: function () {
+        this.isCaught = false;
         this.setPosition(cc.p(200,120));
-    }
-});
-
-var Totoro =AnimalSprite.extend({
-    ctor: function () {
-        this._super();
-        this.initWithFile(s_totoro);
-    },
-
-    initData: function () {
-        this.setPosition(cc.p(650,120));
-    }
-});
-
-
-var Bunny =AnimalSprite.extend({
-    ctor: function () {
-        this._super();
-        this.initWithFile(s_bunny);
-    },
-
-    initData: function () {
-        this.setPosition(cc.p(500,120));
     }
 });
 
@@ -73,6 +52,32 @@ var Lion =AnimalSprite.extend({
     },
 
     initData: function () {
+        this.isCaught = false;
         this.setPosition(cc.p(350,120));
     }
 });
+
+var Bunny =AnimalSprite.extend({
+    ctor: function () {
+        this._super();
+        this.initWithFile(s_bunny);
+    },
+
+    initData: function () {
+        this.isCaught = false;
+        this.setPosition(cc.p(500,120));
+    }
+});
+
+var Totoro =AnimalSprite.extend({
+    ctor: function () {
+        this._super();
+        this.initWithFile(s_totoro);
+    },
+
+    initData: function () {
+        this.isCaught = false;
+        this.setPosition(cc.p(650,120));
+    }
+});
+

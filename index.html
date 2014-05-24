@@ -57,8 +57,8 @@
         #share{
             position: absolute;
             font-size: 15px;
-            left: 250px;
-            top: 240px;
+            left: 130px;
+            top: 100px;
             text-align: left;
             z-index: 3;
             visibility: hidden;
@@ -71,6 +71,8 @@
             document.getElementById("startBackground").style.visibility = "hidden";
             document.getElementById("button").style.visibility = "hidden";
             document.getElementById("share").style.visibility = "hidden";
+            document.getElementById("winBackground").style.visibility = "hidden";
+            document.getElementById("loseBackground").style.visibility = "hidden";
         }
     </script>
     <script src="cocos2d.js"></script>
@@ -97,7 +99,7 @@
         <div id = "winBackground"><img src="res/win.png"/></div>
         <div id = "button" onclick="startGame();"></div>
         <!-- JiaThis Button BEGIN -->
-        <div class="jiathis_style" id = "share"><span class="jiathis_txt">分享到：</span>
+        <div class="jiathis_style" id = "share"><span class="jiathis_txt">( ﾟДﾟ)ﾉ⌒⑤分享窝：</span>
             <a class="jiathis_button_qzone"></a>
             <a class="jiathis_button_tsina"></a>
             <a class="jiathis_button_tqq"></a>

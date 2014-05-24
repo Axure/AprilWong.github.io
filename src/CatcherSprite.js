@@ -13,9 +13,15 @@ var CatcherSprite = cc.Sprite.extend({
         this.velocity = cc.p(100, 100);
     },
 
+    initData: function(){
+        this.setPosition(cc.p(0, CATCHERLINE));
+        dx = 8;
+        dy = 0;
+    },
+
     update: function (dt) {
-        if (this._position.x > 733 ) { rdx = -rdx; dx = -dx};
-        if (this._position.x < 0) {rdx = -rdx; dx = -dx};
+        if ((this._position.x > 733)&&(dx > 0) ) { rdx = -rdx; dx = -dx};
+        if ((this._position.x < 0)&&( dx < 0)) {rdx = -rdx; dx = -dx};
         if (this._position.y <= 290) dy=-dy;
         if (this._position.y >= 450 && dx == 0){
             dx = rdx;

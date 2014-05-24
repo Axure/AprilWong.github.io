@@ -43,12 +43,13 @@ var GameScene = cc.Scene.extend({
         Animal.push(catt);
         var pandaa = new Panda();
         Animal.push(pandaa);
-        var totoroo = new Totoro();
-        Animal.push(totoroo);
-        var bunnyy = new Bunny();
-        Animal.push(bunnyy);
         var lionn = new Lion();
         Animal.push(lionn);
+        var bunnyy = new Bunny();
+        Animal.push(bunnyy);
+        var totoroo = new Totoro();
+        Animal.push(totoroo);
+
 
         for (var i = 0 ; i <Animal.length; i++ ){
             Animal[i].initData();
@@ -57,7 +58,7 @@ var GameScene = cc.Scene.extend({
 
         //add catcher
         this.catcher = new CatcherSprite();
-        this.catcher.setPosition(cc.p(0, CATCHERLINE));
+        this.catcher.initData();
         this.gameLayer.addChild(this.catcher, g_GameZOder.ui);
 
         for (var i = 0 ; i < TOTALNUM; i++){
@@ -111,11 +112,37 @@ var GameScene = cc.Scene.extend({
             if (catchNum == TOTALNUM){
                 document.getElementById("winBackground").style.visibility = "visible";
                 document.getElementById("share").style.visibility = "visible";
+                document.getElementById("button").style.visibility = "visible";
+                for(var i = 0; i<catchNum; i++){
+                    this.gameLayer.removeChild(Flowers[i], g_GameZOder.ui);
+                }
+                for(var i = life; i<TOTALLIFE; i++){
+                    this.gameLayer.addChild(Drops[i],g_GameZOder.ui);
+                }
+                catchNum = 0;
+                life = TOTALLIFE;
+                for(var i = 0; i<TOTALNUM; i++){
+                    Animal[i].setPosition(cc.p(150*i+50,120))
+                    Animal[i].isCaught = false;
+                }
             }
 
             if (life == 0){
                 document.getElementById("loseBackground").style.visibility = "visible";
                 document.getElementById("share").style.visibility = "visible";
+                document.getElementById("button").style.visibility = "visible";
+                for(var i = 0; i<catchNum; i++){
+                    this.gameLayer.removeChild(Flowers[i], g_GameZOder.ui);
+                }
+                for(var i = life; i<TOTALLIFE; i++){
+                    this.gameLayer.addChild(Drops[i],g_GameZOder.ui);
+                }
+                catchNum = 0;
+                life = TOTALLIFE;
+                for(var i = 0; i<TOTALNUM; i++){
+                    Animal[i].setPosition(cc.p(150*i+50,120))
+                    Animal[i].isCaught = false;
+                }
             }
         }
     }
